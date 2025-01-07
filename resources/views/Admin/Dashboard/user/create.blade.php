@@ -1,7 +1,18 @@
 @include('Admin.Dashboard.components.breadcrumb', ['title' => $config['seo']['create']['title']])
 
 
-<form action="" method="post" class="box">
+@if ($errors->any())
+    <div class="alert alert-danger">
+        <ul class="mb-0">
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
+
+
+<form action="{{ route('user.store') }}" method="post" class="box">
     @csrf
     <div class="wrapper wrapper-content animated fadeInRight">
 
@@ -28,8 +39,8 @@
                                 <div class="form-row">
                                     <label for="" class="control-label text-left">Email <span
                                             class="text-danger">(*)</span></label>
-                                    <input type="text" name="email" value="" class="form-control"
-                                        placeholder="Email" autocomplete="off">
+                                    <input type="text" name="email" value="{{ old('email') }}"
+                                        class="form-control" placeholder="Email" autocomplete="off">
                                 </div>
                             </div>
 
@@ -37,8 +48,8 @@
                                 <div class="form-row">
                                     <label for="" class="control-label text-left">Họ Tên <span
                                             class="text-danger">(*)</span></label>
-                                    <input type="text" name="name" value="" class="form-control"
-                                        placeholder="Họ tên" autocomplete="off">
+                                    <input type="text" name="name" value="{{ old('name') }}"
+                                        class="form-control" placeholder="Họ tên" autocomplete="off">
                                 </div>
                             </div>
                         </div>
@@ -59,8 +70,8 @@
                             <div class="col-lg-6">
                                 <div class="form-row">
                                     <label for="" class="control-label text-left">Ngày Sinh</label>
-                                    <input type="text" name="birthday" value="" class="form-control"
-                                        placeholder="Ngày sinh" autocomplete="off">
+                                    <input type="text" name="birthday" value="{{ old('birthday') }}"
+                                        class="form-control" placeholder="Ngày sinh" autocomplete="off">
                                 </div>
                             </div>
                         </div>
@@ -89,7 +100,7 @@
                             <div class="col-lg-12">
                                 <div class="form-row">
                                     <label for="" class="control-label text-left">Ảnh Đại Diện</label>
-                                    <input type="text" name="image" value="" class="form-control"
+                                    <input type="text" name="image" value="image" class="form-control"
                                         placeholder="" autocomplete="off">
                                 </div>
                             </div>
@@ -160,7 +171,7 @@
                             <div class="col-lg-6">
                                 <div class="form-row">
                                     <label for="" class="control-label text-left">Phường/Xã</label>
-                                    <select name="ward_id" id="ward" class="form-control">
+                                    <select name="ward_id" id="ward" class="form-control wards">
                                         <option value="0">(Chọn phường/xã)</option>
 
                                     </select>
@@ -170,8 +181,8 @@
                             <div class="col-lg-6">
                                 <div class="form-row">
                                     <label for="" class="control-label text-left">Địa Chỉ</label>
-                                    <input type="text" name="address" value="" class="form-control"
-                                        placeholder="Địa chỉ" autocomplete="off">
+                                    <input type="text" name="address" value="{{ old('address') }}"
+                                        class="form-control" placeholder="Địa chỉ" autocomplete="off">
                                 </div>
                             </div>
                         </div>
@@ -180,16 +191,16 @@
                             <div class="col-lg-6">
                                 <div class="form-row">
                                     <label for="" class="control-label text-left">Số Điện Thoại</label>
-                                    <input type="text" name="phone" value="" class="form-control"
-                                        placeholder="Số điện thoại" autocomplete="off">
+                                    <input type="text" name="phone" value="{{ old('phone') }}"
+                                        class="form-control" placeholder="Số điện thoại" autocomplete="off">
                                 </div>
                             </div>
 
                             <div class="col-lg-6">
                                 <div class="form-row">
                                     <label for="" class="control-label text-left">Ghi Chú</label>
-                                    <input type="text" name="description" value="" class="form-control"
-                                        placeholder="Ghi chú (nếu có)" autocomplete="off">
+                                    <input type="text" name="description" value="{{ old('description') }}"
+                                        class="form-control" placeholder="Ghi chú (nếu có)" autocomplete="off">
                                 </div>
                             </div>
                         </div>

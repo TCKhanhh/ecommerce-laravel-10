@@ -9,6 +9,8 @@ use Illuminate\Support\Facades\DB;
 use App\Services\Interfaces\UserServiceInterface as UserService;
 use App\Repositories\Interfaces\ProvinceRepositoryInterface as ProvinceRepository;
 
+use App\Http\Requests\StoreUserRequest;
+
 class UserController extends Controller
 {
     protected $userService;
@@ -70,4 +72,10 @@ class UserController extends Controller
 
     //     return view('Admin.Dashboard.layout', compact('template', 'config', 'provinces'));
     // }
+
+    public function store(StoreUserRequest $request)
+    {
+        echo 1;
+        die();
+    }
 }

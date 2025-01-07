@@ -3,12 +3,14 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\Auth\AuthController;
+use App\Http\Controllers\Auth\ForgotPassController;
+
+use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\UserController;
+
 use App\Http\Controllers\Ajax\LocationController;
 
 
-use App\Http\Controllers\Admin\DashboardController;
-use App\Http\Controllers\Auth\ForgotPassController;
 
 
 
@@ -26,6 +28,7 @@ Route::group(['prefix' => 'user'], function () {
     // User
     Route::get('/', [UserController::class, 'index'])->name('user.index')->middleware('admin');
     Route::get('create', [UserController::class, 'create'])->name('user.create')->middleware('admin');
+    Route::post('store', [UserController::class, 'store'])->name('user.store')->middleware('admin');
 });
 
 

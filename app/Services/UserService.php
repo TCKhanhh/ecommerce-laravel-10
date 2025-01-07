@@ -25,7 +25,7 @@ class UserService implements UserServiceInterface
     public function paginate()
     {
         // $users = DB::table('users')->paginate(10);
-        $users =$this->userRepository->getAllPaginate();
+        $users = $this->userRepository->getAllPaginate();
         return $users;
     }
 }
